@@ -13,7 +13,7 @@ namespace WebApp.Controllers
         // GET: Employee/ViewEmployeeList
         public ActionResult ViewEmployeeList()
         {
-            ViewBag.Message = "Employee List.";
+            ViewBag.Message = "Employee List";
 
             var data = GetEmployees();
             List<EmployeeModel> employees = new List<EmployeeModel>();
@@ -31,6 +31,14 @@ namespace WebApp.Controllers
             }
 
             return View(employees);
+        }
+
+        // GET: Employee/AddNewEmployee
+        public ActionResult AddNewEmployee()
+        {
+            ViewBag.Message = "New Employee";
+
+            return View();
         }
     }
 }
