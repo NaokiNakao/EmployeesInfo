@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace BusinessLogic.DataAccess
 {
-    public static class DataAccess
+    public static class SqlDataAccess
     {
         // Returns the database connection string
         public static string GetConnectionString(string connectionName = "DBEmployeesInfo")
@@ -18,21 +18,30 @@ namespace BusinessLogic.DataAccess
             return ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
         }
 
-        // Returns information from the database
+        // Read operation
         public static List<T> LoadData<T>(string sql)
         {
             using (IDbConnection connection = new SqlConnection(GetConnectionString()))
             {
-                return connection.Query<T>(sql).ToList();
+                return connection.Query<T>(sql).ToList(); 
             }
         }
 
-        // Returns affected rows
-        public static int SaveData<T>(string sql, T data)
+        // Create operation
+        public static int InsertData<T>(string sql, T data)
         {
             using (IDbConnection connection = new SqlConnection(GetConnectionString()))
             {
                 return connection.Execute(sql, data);
+            }
+        }
+
+        // Update and Delete operations 
+        public static int SaveData(string sql)
+        {
+            using (IDbConnection connection = new SqlConnection(GetConnectionString()))
+            {
+                return connection.Execute(sql);
             }
         }
     }
