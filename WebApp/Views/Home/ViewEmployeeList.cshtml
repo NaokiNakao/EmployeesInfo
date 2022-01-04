@@ -27,7 +27,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Location)
         </th>
-        <th></th>
+        <th>
+            Actions
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -48,12 +50,13 @@
             @Html.DisplayFor(modelItem => item.Location)
         </td>
         <td>
-            @Html.ActionLink("Edit", "EditEmployee", new { id=item.EmployeeId }) 
-            @Html.ActionLink("Delete", "DeleteEmployee", new { id=item.EmployeeId },
-            new
-            {
-                onclick = "return confirm('Delete Employee?');"
-            })
+            <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("EditEmployee", "Home", new { id = item.EmployeeId })'">
+                Edit
+            </button>
+
+            <button type="button" class="btn btn-danger"  onclick="confirm('Delete Employee?'); location.href = '@Url.Action("DeleteEmployee", "Home", new { id = item.EmployeeId  })'">
+                Delete
+            </button>
         </td>
     </tr>
 }
