@@ -99,5 +99,15 @@ namespace WebApp.Controllers
 
             return View();
         }
+
+        // GET: Employee/DeleteEmployee
+        public ActionResult DeleteEmployee(int id)
+        {
+            DeleteEmployeeById(id);
+
+            ViewBag.AlertMsg = "Employee details deleted successfully";
+
+            return RedirectToAction("ViewEmployeeList");
+        }
     }
 }

@@ -59,11 +59,14 @@ namespace BusinessLogic.Repository
             return SqlDataAccess.SaveData(sql, data);
         }
 
-        /*public static int DeleteEmployeeById(int employeeId)
+        public static int DeleteEmployeeById(int employeeId)
         {
-            string sql = $"DELETE FROM dbo.Employee WHERE EmployeeId = { employeeId };";
+            var data = new { employeeId };
 
-            return SqlDataAccess.SaveData(sql);
-        }*/
+            string sql = @"DELETE FROM dbo.Employee
+                           WHERE EmployeeId = @EmployeeId;";
+
+            return SqlDataAccess.SaveData(sql, data);
+        }
     }
 }
