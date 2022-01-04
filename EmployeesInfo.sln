@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csp
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DBEmployeesInfo", "DBEmployeesInfo\DBEmployeesInfo.sqlproj", "{1FFC1068-A012-43C2-9F5A-C3B0C4386343}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{03F8E1D1-FDA1-434A-A08F-3D312386A556}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,12 +27,17 @@ Global
 		{1FFC1068-A012-43C2-9F5A-C3B0C4386343}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FFC1068-A012-43C2-9F5A-C3B0C4386343}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1FFC1068-A012-43C2-9F5A-C3B0C4386343}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{03F8E1D1-FDA1-434A-A08F-3D312386A556}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03F8E1D1-FDA1-434A-A08F-3D312386A556}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03F8E1D1-FDA1-434A-A08F-3D312386A556}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03F8E1D1-FDA1-434A-A08F-3D312386A556}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4718D27F-36EF-4768-93DB-0B192E16AC3E} = {8AE40C11-06D2-4B82-83A0-A690961266AC}
+		{03F8E1D1-FDA1-434A-A08F-3D312386A556} = {8AE40C11-06D2-4B82-83A0-A690961266AC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EFCBF917-328D-46EC-BBC4-0D460F6DEF9A}
