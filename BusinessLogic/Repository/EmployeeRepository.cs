@@ -30,13 +30,13 @@ namespace BusinessLogic.Repository
 
         public static List<EmployeeModel> GetEmployees()
         {
-            string sql = @"SELECT Is, EmployeeId, FirstName, LastName, EmailAddress, Location
+            string sql = @"SELECT Id, EmployeeId, FirstName, LastName, EmailAddress, Location
                            FROM dbo.Employee;";
 
             return SqlDataAccess.LoadData<EmployeeModel>(sql);
         }
 
-        public static int UpdateEmployeeById(int id, int employeeId, string firstName, string lastName,
+        public static int UpdateEmployeeById(int employeeId, string firstName, string lastName,
             string emailAddress, string location)
         {
             string sql = @"UPDATE dbo.Employee
@@ -46,15 +46,15 @@ namespace BusinessLogic.Repository
                            LastName=@lastName,
                            EmailAddress=@emailAddress,
                            Location=@location
-                           WHERE Id=@id";
+                           WHERE EmployeeId=@employeeId;";
 
             return SqlDataAccess.SaveData(sql);
         }
 
-        public static int DeleteEmployeeById(int id)
+        public static int DeleteEmployeeById(int employeeId)
         {
             string sql = @"DELETE FROM dbo.Employee
-                           WHERE Id=@id;";
+                           WHERE EmployeeId=@employeeId;";
 
             return SqlDataAccess.SaveData(sql);
         }
