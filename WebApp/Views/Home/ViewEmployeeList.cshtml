@@ -6,9 +6,10 @@
 
 <h2>Employee List</h2>
 
-<p>
-    @Html.ActionLink("New Employee", "AddNewEmployee")
-</p>
+<button type="button" class="btn btn-success" onclick="location.href = '@Url.Action("AddNewEmployee", "Home")'">
+    New Employee
+</button>
+
 <table class="table">
     <tr>
         <th>
