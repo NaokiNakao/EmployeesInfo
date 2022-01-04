@@ -13,19 +13,19 @@ namespace BusinessLogic.Repository
         public static int CreateEmployee(int employeeId, string firstName, string lastName,
             string emailAddress, string location)
         {
-            EmployeeModel data = (new EmployeeModel
+            EmployeeModel data = new EmployeeModel
             {
                 EmployeeId = employeeId,
                 FirstName = firstName,
                 LastName = lastName,
                 EmailAddress = emailAddress,
                 Location = location
-            });
+            };
 
             string sql = @"INSERT INTO dbo.Employee (EmployeeId, FirstName, LastName, EmailAddress, Location)
                            VALUES (@EmployeeId, @FirstName, @LastName, @EmailAddress, @Location);";
 
-            return SqlDataAccess.InsertData(sql, data);
+            return SqlDataAccess.SaveData(sql, data);
         }
 
         public static List<EmployeeModel> GetEmployees()
@@ -39,24 +39,31 @@ namespace BusinessLogic.Repository
         public static int UpdateEmployeeById(int employeeId, string firstName, string lastName,
             string emailAddress, string location)
         {
+            var data = new
+            {
+                employeeId,
+                firstName,
+                lastName,
+                emailAddress,
+                location
+            };
+
             string sql = @"UPDATE dbo.Employee
                            SET
-                           EmployeeId=@employeeId,
-                           FirstName=@firstName,
-                           LastName=@lastName,
-                           EmailAddress=@emailAddress,
-                           Location=@location
-                           WHERE EmployeeId=@employeeId;";
+                           FirstName = @FirstName,
+                           LastName = @LastName,
+                           EmailAddress = @EmailAddress,
+                           Location = @Location
+                           WHERE EmployeeId = @EmployeeId;";
 
-            return SqlDataAccess.SaveData(sql);
+            return SqlDataAccess.SaveData(sql, data);
         }
 
-        public static int DeleteEmployeeById(int employeeId)
+        /*public static int DeleteEmployeeById(int employeeId)
         {
-            string sql = @"DELETE FROM dbo.Employee
-                           WHERE EmployeeId=@employeeId;";
+            string sql = $"DELETE FROM dbo.Employee WHERE EmployeeId = { employeeId };";
 
             return SqlDataAccess.SaveData(sql);
-        }
+        }*/
     }
 }

@@ -18,7 +18,6 @@ namespace BusinessLogic.DataAccess
             return ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
         }
 
-        // Read operation
         public static List<T> LoadData<T>(string sql)
         {
             using (IDbConnection connection = new SqlConnection(GetConnectionString()))
@@ -27,21 +26,11 @@ namespace BusinessLogic.DataAccess
             }
         }
 
-        // Create operation
-        public static int InsertData<T>(string sql, T data)
+        public static int SaveData<T>(string sql, T data)
         {
             using (IDbConnection connection = new SqlConnection(GetConnectionString()))
             {
                 return connection.Execute(sql, data);
-            }
-        }
-
-        // Update and Delete operations 
-        public static int SaveData(string sql)
-        {
-            using (IDbConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                return connection.Execute(sql);
             }
         }
     }
