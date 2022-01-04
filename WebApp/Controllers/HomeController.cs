@@ -40,5 +40,27 @@ namespace WebApp.Controllers
 
             return View();
         }
+
+        // POST: Employee/AddNewEmployee
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddNewEmployee(EmployeeModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                int recordsCreated = CreateEmployee(
+                    model.EmployeeId,
+                    model.FirstName,
+                    model.LastName,
+                    model.EmailAddress,
+                    model.Location);
+
+                ViewBag.Message = "Records added successfully.";
+
+                return RedirectToAction("ViewEmployeeList");
+            }
+
+            return View();
+        }
     }
 }
