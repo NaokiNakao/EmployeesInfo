@@ -62,5 +62,42 @@ namespace WebApp.Controllers
 
             return View();
         }
+
+        // GET: Employee/EditEmployee
+        public ActionResult EditEmployee(int id)
+        {
+            BusinessLogic.Models.EmployeeModel auxEmployee = GetEmployees().Find(Emp => Emp.EmployeeId == id);
+            EmployeeModel SelectedEmployee = new EmployeeModel
+            {
+                EmployeeId = auxEmployee.EmployeeId,
+                FirstName = auxEmployee.FirstName,
+                LastName = auxEmployee.LastName,
+                EmailAddress = auxEmployee.EmailAddress,
+                Location = auxEmployee.Location
+            };
+
+            return View(SelectedEmployee);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditEmployee(EmployeeModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                int recordsUpdated = UpdateEmployeeById(
+                    model.EmployeeId,
+                    model.FirstName,
+                    model.LastName,
+                    model.EmailAddress,
+                    model.Location);
+
+                ViewBag.Message = "Records updated successfully.";
+
+                return RedirectToAction("ViewEmployeeList");
+            }
+
+            return View();
+        }
     }
 }

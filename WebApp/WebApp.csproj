@@ -156,6 +156,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\ViewEmployeeList.cshtml" />
     <Content Include="Views\Home\AddNewEmployee.cshtml" />
+    <Content Include="Views\Home\EditEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

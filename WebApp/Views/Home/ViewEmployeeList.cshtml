@@ -48,8 +48,12 @@
             @Html.DisplayFor(modelItem => item.Location)
         </td>
         <td>
-            @Html.ActionLink("Edit", "EditEmployee", new { id=item.EmployeeId }) |
-            @Html.ActionLink("Delete", "DeleteEmployee", new { id = item.EmployeeId })
+            @Html.ActionLink("Edit", "EditEmployee", new { id=item.EmployeeId }) 
+            @Html.ActionLink("Delete", "DeleteEmployee", new { id=item.EmployeeId },
+            new
+            {
+                onclick = "return confirm('Delete Employee?');"
+            })
         </td>
     </tr>
 }
